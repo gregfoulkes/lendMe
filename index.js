@@ -1,8 +1,6 @@
 const express = require('express');
-const expressHandlebars = require('express-handlebars');
 const app = express();
-//const http = require('http').Server(app);
-//const io = require('socket.io')(http);
+
 const bodyParser = require('body-parser');
 const session = require('express-session');
 const flash = require('express-flash');
