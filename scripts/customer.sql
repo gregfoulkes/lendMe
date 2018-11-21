@@ -1,4 +1,4 @@
-drop table if exists customer cascade;
+drop table if exists customer;
 
 create table customer (
     id serial  not null primary key,
@@ -6,6 +6,6 @@ create table customer (
     firstname text not null,
     lastname text not null,
     email text not null,
-    mobile int not null,
+    mobile FLOAT not null,
     customer_type text not null
 )
