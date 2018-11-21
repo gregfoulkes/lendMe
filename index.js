@@ -1,11 +1,10 @@
 const express = require('express');
 const app = express();
-
+const axios = require('axios')
 let BorrowerApi = require('./api/borrower-api');
 
 const bodyParser = require('body-parser');
 const session = require('express-session');
-const flash = require('express-flash');
 
 //database config
 const Config = require('./config/database_connection')
@@ -22,14 +21,13 @@ app.use(session({
   saveUninitialized: true
 }))
 
-app.use(flash());
-let borrowerApi = BorrowerApi();
-app.use('/api/borrowers', borrowerApi.router);
-app.get('/', function(req,res) {
+const RequireRoutes = require('./routes/lendMeRoutes')
 
-  res.send('Lend Me')
+const requiredRoutes = RequireRoutes()
+//let borrowerApi = BorrowerApi();
+//app.use('/api/borrowers', borrowerApi.router);
 
-});
+app.get('/api', requiredRoutes.Customer);
 
 
 
