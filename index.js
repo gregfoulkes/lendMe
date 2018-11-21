@@ -1,6 +1,7 @@
 const express = require('express');
 const app = express();
 const axios = require('axios')
+const BorrowerServices = require('./services/borrower');
 let BorrowerApi = require('./api/borrower-api');
 
 let pg = ('pg')
@@ -23,16 +24,16 @@ app.use(session({
   saveUninitialized: true
 }))
 
-const RequireRoutes = require('./routes/lendMeRoutes')
+// const RequireRoutes = require('./routes/lendMeRoutes')
 
-const requiredRoutes = RequireRoutes()
+// const requiredRoutes = RequireRoutes()
 
 let pool = Config()
-//let borrowerApi = BorrowerApi();
-//app.use('/api/borrowers', borrowerApi.router);
+let borrowerServices = BorrowerServices(pool);
+let borrowerApi = BorrowerApi(borrowerServices);
+app.use('/api/borrowers', borrowerApi.router);
 
-app.get('/api', requiredRoutes.Customer);
-
+// app.get('/api', requiredRoutes.Customer);
 //await spool.query('select * from customer')
 
 
