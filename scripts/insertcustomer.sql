@@ -1,1 +1,1 @@
-insert into customer(addpayid, firstname, lastname, email, mobile, customer_type ) values('eakfgfaoifoagifgfga''Andrew', 'Monamodi','andrew@gmail.com',079654756,'borrower')
+insert into customer(firstname, lastname, email, mobile, customer_type ) values('Andrew', 'Monamodi','andrew@gmail.com',2779654756,'borrower')
