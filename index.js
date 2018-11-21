@@ -3,6 +3,8 @@ const app = express();
 const axios = require('axios')
 let BorrowerApi = require('./api/borrower-api');
 
+let pg = ('pg')
+
 const bodyParser = require('body-parser');
 const session = require('express-session');
 
@@ -24,10 +26,15 @@ app.use(session({
 const RequireRoutes = require('./routes/lendMeRoutes')
 
 const requiredRoutes = RequireRoutes()
+
+let pool = Config()
 //let borrowerApi = BorrowerApi();
 //app.use('/api/borrowers', borrowerApi.router);
 
 app.get('/api', requiredRoutes.Customer);
+
+//await spool.query('select * from customer')
+
 
 
 
