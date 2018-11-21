@@ -1,8 +1,8 @@
 const express = require('express');
-const expressHandlebars = require('express-handlebars');
 const app = express();
-//const http = require('http').Server(app);
-//const io = require('socket.io')(http);
+
+let BorrowerApi = require('./api/borrower-api');
+
 const bodyParser = require('body-parser');
 const session = require('express-session');
 const flash = require('express-flash');
@@ -23,12 +23,15 @@ app.use(session({
 }))
 
 app.use(flash());
-
+let borrowerApi = BorrowerApi();
+app.use('/api/borrowers', borrowerApi.router);
 app.get('/', function(req,res) {
 
   res.send('Lend Me')
 
-} );
+});
+
+
 
 var port = process.env.port || 3007;
 app.listen(port, function(){
