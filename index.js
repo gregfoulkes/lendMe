@@ -1,11 +1,12 @@
 const express = require('express');
-const expressHandlebars = require('express-handlebars');
 const app = express();
-//const http = require('http').Server(app);
-//const io = require('socket.io')(http);
+const axios = require('axios')
+let BorrowerApi = require('./api/borrower-api');
+
+let pg = ('pg')
+
 const bodyParser = require('body-parser');
 const session = require('express-session');
-const flash = require('express-flash');
 
 //database config
 const Config = require('./config/database_connection')
@@ -22,13 +23,20 @@ app.use(session({
   saveUninitialized: true
 }))
 
-app.use(flash());
+const RequireRoutes = require('./routes/lendMeRoutes')
 
-app.get('/', function(req,res) {
+const requiredRoutes = RequireRoutes()
 
-  res.send('Lend Me')
+let pool = Config()
+//let borrowerApi = BorrowerApi();
+//app.use('/api/borrowers', borrowerApi.router);
 
-} );
+app.get('/api', requiredRoutes.Customer);
+
+//await spool.query('select * from customer')
+
+
+
 
 var port = process.env.port || 3007;
 app.listen(port, function(){
