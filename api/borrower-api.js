@@ -27,8 +27,6 @@ module.exports = function borrowerApiCall(borrowerServices){
             next(err);
         }
     });
-
-
     return{
         router
     }
