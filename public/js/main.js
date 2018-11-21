@@ -12,6 +12,11 @@ let app = new Vue ({
 
     methods: {
 
+        showBorrower: function(){
+            this.showlanding = false
+            this.showborrower = true
+        }
+
     }
 
 
