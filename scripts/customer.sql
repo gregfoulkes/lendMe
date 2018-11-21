@@ -2,7 +2,7 @@ drop table if exists customer cascade;
 
 create table customer (
     id serial  not null primary key,
-    addpayid text not null,
+    addpayid text,
     firstname text not null,
     lastname text not null,
     email text not null,
