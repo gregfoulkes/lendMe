@@ -28,8 +28,8 @@
 
     <div id='lendMe'>
 
-            <landingpage v-if='showlanding' ></landingpage>
-            <borrowercomponent v-if='showborrower'></borrowercomponent>
+            <landingpage v-on:borrow='showBorrower()' v-if='showlanding' ></landingpage>
+            <borrowerpage v-if='showborrower'></borrowerpage>
 
     </div>
     <!-- <div class="container">
@@ -71,8 +71,9 @@
 
 
 </body>
-<script src='./components/landingPageComponent.js'></script>
 <script src='./components/borrowerComponent.js'></script>
+
+<script src='./components/landingPageComponent.js'></script>
 
 <script src='./js/main.js'></script>
 
