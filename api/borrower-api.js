@@ -15,13 +15,15 @@ module.exports = function borrowerApiCall(borrowerServices){
         }
     });
 
-    router.post('/borrower', async (req, res, next) => {
+    router.post('/createcustomer', async (req, res, next) => {
+        let {customer} = req.body
+        console.log(customer)
         //creating a new customer
         try{
-            await borrowerServices.insertBorrower(firstName, lastName, email, mobile, role);
+            await borrowerServices.insertBorrower(customer.firstname, customer.lastname, customer.email, customer.mobile, customer.customer_type);
             res.status(201).json({
-                message: 'Handling Post request, adding a new customer',
-                data: newCustomer
+                message: 'Handling Post request, adding a new customer'
+                // data: newCustomer
             });
         }catch(err){
             next(err);

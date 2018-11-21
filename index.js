@@ -31,8 +31,13 @@ app.use(session({
 let pool = Config()
 let borrowerServices = BorrowerServices(pool);
 let borrowerApi = BorrowerApi(borrowerServices);
-app.use('/api/borrowers', borrowerApi.router);
 
+ app.use('/api/borrowers', borrowerApi.router);
+//app.use('/borrowers', borrowerApi.router);
+
+// let lendmeroutes = lendmeroutes
+
+// app.get('api/createcustomer', borr )
 // app.get('/api', requiredRoutes.Customer);
 //await spool.query('select * from customer')
 

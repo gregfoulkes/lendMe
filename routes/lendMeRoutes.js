@@ -1,7 +1,8 @@
-module.exports = function(shoeApi) {
+module.exports = function(borrowerServices) {
 
     async function Customer(req,res){
         try {
+            await borrowerServices.insertBorrower()
             res.json({
                 status: 'success',
                 firstname: 'greg',
