@@ -22,8 +22,8 @@ module.exports = function borrowerApiCall(borrowerServices){
         try{
             await borrowerServices.insertBorrower(customer.firstname, customer.lastname, customer.email, customer.mobile, customer.customer_type);
             res.status(201).json({
-                message: 'Handling Post request, adding a new customer'
-                // data: newCustomer
+                message: 'Handling Post request, adding a new customer',
+                data: customer
             });
         }catch(err){
             next(err);
