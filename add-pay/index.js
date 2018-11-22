@@ -6,7 +6,9 @@ const addPay = AddPay({
 
 let URL = process.env.URL || 'http://localhost:3007';
 
-async function createTransaction() {
+
+
+async function createTransaction(transactionData) {
     let data = ()=>{
         return axios.post(URL+'/api/borrowers/createtransaction')
     }

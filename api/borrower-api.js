@@ -80,7 +80,7 @@ module.exports =
 
                 } = req.body
 
-                console.log(customer)
+               // console.log(customer)
 
                 //creating a new customer
 
@@ -109,23 +109,23 @@ module.exports =
                 res,
                 next) => {
 
-                // let {transaction} = req.body;
+                 let {transaction} = req.body;
+                    console.log(req.body.transactionData)
+                // let transaction = {
 
-                let transaction = {
+                //     "reference": "lendMe_096",
 
-                    "reference": "lendMe_096",
+                //     "description": "lendMe transaction 60",
 
-                    "description": "lendMe transaction 60",
+                //     "amount": {
 
-                    "amount": {
+                //         "value": 7452.25,
 
-                        "value": 7452.25,
+                //         "currency_code": "ZAR"
 
-                        "currency_code": "ZAR"
+                //     }
 
-                    }
-
-                }
+                // }
 
                 try {
 
