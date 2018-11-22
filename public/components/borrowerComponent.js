@@ -16,7 +16,11 @@ Vue.component('borrowerpage', {
     },
 
     mounted: function() {
+
+        let self = this
         this.getCustomer('Andrew')
+
+        console.log(self.firstname)
     },
 
     methods: {
@@ -70,13 +74,12 @@ Vue.component('borrowerpage', {
                         customer_type:self.customer_type
                     }
 
-                    // self.data.customer_data.push(customer)
+                     //self.customer_data.push(customer)
 
-                     console.log(customer)
-                
+                     //console.log(self.data.firstname)
+                     
 
               })
-
         }
 
     },
@@ -85,7 +88,11 @@ Vue.component('borrowerpage', {
 
     <div>
     
-    <div v-bind:firstname='firstname'>{{firstname}}</div>
+    {{firstname}}
+    {{lastname}}
+    {{mobile}}
+    {{customer_type}}
+    {{email}}
 
     </div>
 
