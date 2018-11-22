@@ -1,43 +1,43 @@
-const axios = require('axios');
-const AddPay = require('./add-pay');
-const addPay = AddPay({
-    token: process.env.TOKEN
-});
+// const axios = require('axios');
+// const AddPay = require('./add-pay');
+// const addPay = AddPay({
+//     token: process.env.TOKEN
+// });
 
-let URL = process.env.URL || 'http://localhost:3007';
+// let URL = process.env.URL || 'http://localhost:3007';
 
 
 
-async function createTransaction(transactionData) {
-    let data = ()=>{
-        return axios.post(URL+'/api/borrowers/createtransaction')
-    }
-    await data()
-    .then(async (results)=>{
-        console.log(results.data.data)
-        let transactionData = results.data.data;
-        let result = await addPay.createTransaction(transactionData)
-        let transactionId = result.data.data.id;
-        console.log(transactionId);
+// async function createTransaction(transactionData) {
+//     let data = ()=>{
+//         return axios.post(URL+'/api/borrowers/createtransaction')
+//     }
+//     await data()
+//     .then(async (results)=>{
+//         console.log(results.data.data)
+//         let transactionData = results.data.data;
+//         let result = await addPay.createTransaction(transactionData)
+//         let transactionId = result.data.data.id;
+//         console.log(transactionId);
 
-    })
-    .catch((err)=>{
-        console.error(err);
-    })
+//     })
+//     .catch((err)=>{
+//         console.error(err);
+//     })
 
-    // let result = await addPay.createTransaction(transactionData)
-    // let transactionId = result.data.data.id;
-    // console.log(transactionId);
-    //return await addPay.associateTransactionWithCustomer(transactionId, '2e2bc70a-f78c-45b9-8666-43082ee7a2ee');
-}
+//     // let result = await addPay.createTransaction(transactionData)
+//     // let transactionId = result.data.data.id;
+//     // console.log(transactionId);
+//     //return await addPay.associateTransactionWithCustomer(transactionId, '2e2bc70a-f78c-45b9-8666-43082ee7a2ee');
+// }
 
-createTransaction()
-    .then((result) => {
+// createTransaction()
+//     .then((result) => {
         
-    })
-    .catch((err) => {
-        console.log(err)
-    });
+//     })
+//     .catch((err) => {
+//         console.log(err)
+//     });
 
 // async function createCustomer(){    
 //     let data = ()=>{
