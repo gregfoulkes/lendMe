@@ -98,6 +98,22 @@ Vue.component('borrowerpage', {
             console.log(self.amount.value)
             console.log(self.amount.currency_code)
 
+            let transactionData = {
+                reference:self.reference,
+                description:self.description,
+                amount:{
+                    value:self.amount.value,
+                    currency_code:self.amount.currency_code
+                }
+            }
+
+            console.log(transactionData)
+
+            axios.post('api/borrowers/createtransaction', {transactionData}).then(function(result){
+                alert(result.status)
+                console.log(result.data)
+            })
+
 
 
         }
@@ -141,7 +157,7 @@ Vue.component('borrowerpage', {
                                 <div class="col-8">
                                   <input v-model = 'description' placeholder="Description" class="form-control here" type="text">
                                 </div>
-                              </div>
+                              </div>transaction
 
                               <div class="form-group row">
                                 <label for="mobile" class="col-4 col-form-label">Value</label> 
