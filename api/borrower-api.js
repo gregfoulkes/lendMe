@@ -25,30 +25,7 @@ module.exports = function borrowerApiCall(borrowerServices) {
                 message: 'Handling GET request returning the borrower information with balance',
                 data: data
             });
-        } catch (err) {
-            next(err);
-        }
-    });
-    router.post('/createcustomer',async (req,res,next) => {
-        let {customer} = req.body
-        console.log(customer)
-        //creating a new customer
-        try {
-            await borrowerServices.insertBorrower(customer.firstname, customer.lastname, customer.email, customer.mobile, customer.customer_type);
-            res.status(201).json({
-                message: 'Handling Post request, adding a new customer',
-                data: customer
-            });
-        } catch (err) {
-            next(err);
-        }
-    });
-    router.post('/createtransaction',async (req,res,next) => {
-       let {transaction} = req.body;
-        try {
-            res.status(201).json({
-                message: 'Handling Post request, customer transaction',
-                data: transaction
+
             });
         } catch (err) {
             next(err);
