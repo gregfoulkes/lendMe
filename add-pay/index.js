@@ -39,31 +39,31 @@ createTransaction()
         console.log(err)
     });
 
-// async function createCustomer(){    
-//     let data = ()=>{
-//         return axios.get(URL+'/api/borrowers/name/Andrew')
-//     }
-//     await data()
-//     .then(async (result)=>{
-//         let response = result.data.data;
-//         let customerData = {
-//             firstname: response[0].firstname,
-//             lastname: response[0].lastname,
-//             email: response[0].email,
-//             mobile: ''+response[0].mobile+''
-//             // return_url: "https://addpay-callbacks.herokuapp.com/return",
-//             // notify_url: "https://addpay-callbacks.herokuapp.com/notify" 
-//         }
-//         console.log(customerData);
-//         let results = await addPay.createCustomer(customerData)
-//         let customerId = results.data.data.id;
-//         console.log(customerId);
-//     })
-//     .catch((err)=>{
-//         console.error(err);
-//     })
-// }
-// createCustomer();
+async function createCustomer(){    
+    let data = ()=>{
+        return axios.get(URL+'/api/borrowers/name/Andrew')
+    }
+    await data()
+    .then(async (result)=>{
+        let response = result.data.data;
+        let customerData = {
+            firstname: response[0].firstname,
+            lastname: response[0].lastname,
+            email: response[0].email,
+            mobile: ''+response[0].mobile+''
+            // return_url: "https://addpay-callbacks.herokuapp.com/return",
+            // notify_url: "https://addpay-callbacks.herokuapp.com/notify" 
+        }
+        console.log(customerData);
+        let results = await addPay.createCustomer(customerData)
+        let customerId = results.data.data.id;
+        console.log(customerId);
+    })
+    .catch((err)=>{
+        console.error(err);
+    })
+}
+createCustomer();
 
 // let createTransactionData = {
 //     "reference": "codex_003",
