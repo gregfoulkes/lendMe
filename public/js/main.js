@@ -3,7 +3,8 @@ let app = new Vue ({
     el: '#lendMe',    
     data: {
         showlanding: true,
-        showborrower:false
+        showborrower:false,
+        showtransactionpage: false
     },
 
     mounted: function() {
@@ -15,6 +16,12 @@ let app = new Vue ({
         showBorrower: function(){
             this.showlanding = false
             this.showborrower = true
+        },
+
+        showTransaction: function() {
+            this.showtransactionpage = true
+
+            this.showlanding = false
         }
 
     }
