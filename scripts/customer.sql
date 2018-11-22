@@ -1,4 +1,4 @@
-drop table if exists customer, borrowers_table cascade;
+drop table if exists customer, borrowers_table
 
 create table customer (
     id serial  not null primary key,
