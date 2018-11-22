@@ -1,5 +1,3 @@
-// const Connection = require('../config/database_connection')
-// const pool = Connection();
 module.exports = function borrower(pool){
 
     async function insertBorrower(firstname, lastname, email, mobile, customer_type){
@@ -28,8 +26,19 @@ module.exports = function borrower(pool){
             return false;
         }
     }
+    //GET customer with the rating and balance
+    async function getCustomerBalance(mobile){
+        let results = await pool.query('select * from customer WHERE mobile = $1', [mobile]);
+        if(results.rows.length > 0){
+            let user = results.rows[0];
+            let user_id = user.id;
+            let resultsBalance = await pool.query('select customer.firstname, customer.lastname,customer.mobile, borrowers_table.trust_rate, borrowers_table.amount_owed from borrowers_table join customer on borrowers_table.customer_id = customer.id where customer.id=$1;', [user_id]);
+            return resultsBalance.rows;
+        }     
+    }
     return{
         insertBorrower,
-        getByName
+        getByName,
+        getCustomerBalance
     }
 }

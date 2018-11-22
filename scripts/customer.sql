@@ -9,3 +9,11 @@ create table customer (
     mobile FLOAT not null,
     customer_type text not null
 )
+
+create TABLE borrowers_table(
+    id serial not null PRIMARY KEY,
+    customer_id int,
+    amount_owed FLOAT,
+    trust_rate int,
+    FOREIGN KEY(customer_id) REFERENCES customer(id)
+)
