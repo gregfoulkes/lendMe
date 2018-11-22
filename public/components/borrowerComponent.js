@@ -83,12 +83,12 @@ Vue.component('borrowerpage', {
 
                      //self.customer_data.push(customer)
 
-                     //console.log(self.data.firstname)
+                     //call createcustomer api
                      
 
               })
         },
-        
+
         createTransaction: function () {        
             let self = this;
 
