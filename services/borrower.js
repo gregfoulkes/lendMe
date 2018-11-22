@@ -14,6 +14,7 @@ module.exports = function borrower(pool){
     }
     //get the customer details
     async function getByName(firstName){
+        console.log(firstName)
         let results = await pool.query('select * from customer WHERE firstname = $1', [firstName]);
         return results.rows;
     }

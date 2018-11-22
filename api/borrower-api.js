@@ -4,6 +4,7 @@ module.exports = function borrowerApiCall(borrowerServices){
     //get user by name
     router.get('/name/:borrowerName', async(req, res, next)=>{
         let username = req.params.borrowerName;
+        console.log(username)
         try{
             let data = await borrowerServices.getByName(username);
             res.status(200).json({
