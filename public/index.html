@@ -31,7 +31,7 @@
 
     <div id='lendMe'>
 
-            <landingpage v-on:transaction='showTransaction()' v-on:borrow='showBorrower()' v-if='showlanding' ></landingpage>
+            <landingpage v-on:transaction='showTransaction()' v-on:borrow='showBorrower' v-if='showlanding' ></landingpage>
             <borrowerpage v-if='showborrower'></borrowerpage>
             <transaction  v-if='showtransactionpage'> </transaction>
 

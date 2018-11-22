@@ -1,3 +1,8 @@
+const AddPay = require('../add-pay/add-pay');
+const addPay = AddPay({
+    token: process.env.TOKEN
+});
+
 module.exports =
     function borrowerApiCall(borrowerServices) {
 
@@ -109,8 +114,36 @@ module.exports =
                 res,
                 next) => {
 
-                 let {transaction} = req.body;
-                    console.log(req.body.transactionData)
+                let {transaction} = req.body;
+                let transactionData = req.body.transactionData;
+                console.log(transactionData);
+                
+                try {
+                    let response = await addPay.createTransaction(transactionData);
+                    let addPayResponse = response.data;
+                    
+                    const meta = addPayResponse.meta;
+                    
+                //    let transactionResponse = await addPay.associateTransactionWithCustomer(addPayResponse.data.id, '2e2bc70a-f78c-45b9-8666-43082ee7a2ee')
+                //     console.log(transactionResponse)
+                    return {
+                        status: meta.status,
+                        payment_url: addPayResponse.data.direct,
+                        transaction_id: addPayResponse.data.id
+                    }
+
+
+                }
+                catch(err){
+                    console.log(err);
+                    return {
+                        status : 'error'
+                    }
+                }
+                
+                
+
+
                 // let transaction = {
 
                 //     "reference": "lendMe_096",

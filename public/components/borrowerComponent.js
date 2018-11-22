@@ -53,18 +53,17 @@ Vue.component('borrowerpage', {
         },
 
         getCustomer: function(firstname) {
+            let self = this
 
             //console.log(firstname)
 
-           return axios.get('/api/borrowers/name/' + firstname).then(function(result){
+           return axios.get('/api/borrowers/name/Andrew')
+           .then(function(result){
                 alert(result.status)
             let resultData = result.data
-                console.log(resultData)
             let customerData = resultData.data
+            
                 console.log(customerData)
-
-                let self = this
-
              
                     self.firstname = customerData[0].firstname,
                     self.lastname = customerData[0].lastname,
@@ -123,6 +122,8 @@ Vue.component('borrowerpage', {
     template: `
 
     <div>
+
+
     
     {{firstname}}
     {{lastname}}
@@ -182,8 +183,6 @@ Vue.component('borrowerpage', {
 </div>
 
     </div>
-
-    
 
 
 `
