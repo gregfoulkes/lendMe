@@ -16,8 +16,8 @@ Vue.component('borrowerpage', {
             amount: {
                 value: Number(''),
                 currency_code:"ZAR"
-            }
-
+            },
+            payment_url:''
         }
 
     },
@@ -26,7 +26,6 @@ Vue.component('borrowerpage', {
 
         let self = this
         this.getCustomer('Andrew')
-
         console.log(self.firstname)
     },
 
@@ -109,15 +108,15 @@ Vue.component('borrowerpage', {
 
             console.log(transactionData)
 
-            axios.post('api/borrowers/createtransaction', {transactionData}).then(function(result){
-                alert(result.status)
-                console.log(result.data)
+            axios.post('api/borrowers/createtransaction', {transactionData})
+            .then(function(result){
+                self.payment_url = result.data.payment_url;
+                console.log(result.data.payment_url);
             })
-
-
-
+            .catch(function(err){
+                alert(err);
+            });
         }
-
     },
 
     template: `
@@ -171,7 +170,7 @@ Vue.component('borrowerpage', {
                                   <button v-on:click="createTransaction()" name="submit" type="button" class="btn btn-primary">Update My Profile</button>
                                 </div>
                               </div>
-                              
+                              <a v-if="payment_url" v-bind:href="payment_url">Pay here</a>  
 		                </div>
 		            </div>
 		            
@@ -184,7 +183,6 @@ Vue.component('borrowerpage', {
     </div>
 
     
-
 
 `
 })
